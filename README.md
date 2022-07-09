@@ -24,7 +24,7 @@ generate kprobe probe : ["__x64_sys_tgkill"] probers : Prober {
 
 ### Monitor with prober :
 
-```
+```shell
 $ ./monitor --probes prober-tgkill.yaml
 ```
 
@@ -52,9 +52,10 @@ source : /tmp/tgkill.c___x64_sys_tgkill
 
 #### generate a second probe
 
-```
+```shell
 $ ./target/release/generate "__x64_sys_openat" --kprobe --args "sys_f:%d" "sys_path:%s@user" -o /tmp/openat.c --prober-name "prober-openat.yaml"
 ```
+
 ```
 generate kprobe probe : ["__x64_sys_openat"]
 probers : Prober {
@@ -71,7 +72,7 @@ probers : Prober {
 }
 ```
 
-```
+```shell
 $ ./monitor --probes prober-tgkill.yaml prober-openat.yaml
 ```
 
