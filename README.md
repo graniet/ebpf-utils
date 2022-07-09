@@ -7,7 +7,8 @@
 ```    
 
 ```
-generate kprobe probe : ["__x64_sys_tgkill"] probers : Prober {
+generate kprobe probe : ["__x64_sys_tgkill"]
+probers : Prober {
      probe_type: "kprobe",
      probe_path: "/tmp/tgkill.c",
      probe_init: "do_probing",
