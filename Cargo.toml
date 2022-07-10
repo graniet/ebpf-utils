@@ -1,6 +1,7 @@
 [workspace]
 
 members = [
-        "generate",
-	"monitor"
+  "generate",
+	"monitor",
+  "ebpf-utils"
 ]

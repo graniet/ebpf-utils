@@ -3,27 +3,9 @@ mod monitor;
 mod probers;
 mod session;
 
-use clap::{Arg, Command};
+use clap;
 
-fn main() {
-    let matches = Command::new("ebpf-monitor")
-        .about("monitoring ebpf probe generated with ebpf-util")
-        .arg(
-            Arg::new("probes")
-                .short('p')
-                .long("probes")
-                .help("loading probes into kernel BPF VM")
-                .required(true)
-                .multiple_values(true)
-                .takes_value(true),
-        )
-        .arg(
-            Arg::new("binary")
-                .long("binary")
-                .help("binary for userspace probe")
-                .takes_value(true),
-        )
-        .get_matches();
+pub fn process(matches: &clap::ArgMatches) {
 
     let probes: Vec<probers::Prober> = match matches.values_of("probes") {
         Some(p) => {
