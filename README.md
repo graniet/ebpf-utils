@@ -3,7 +3,7 @@
 ### Generate a  probe :
 
 ```shell
-./generate "__x64_sys_tgkill" --kprobe --args "sys_tgid:%d" "sys_pid:%d" "sys_signal:%d" -o /tmp/tgkill.c --prober-name "prober-tgkill.yaml"
+./ebpf-utils generate "__x64_sys_tgkill" --kprobe --args "sys_tgid:%d" "sys_pid:%d" "sys_signal:%d" -o /tmp/tgkill.c --prober-name "prober-tgkill.yaml"
 ```    
 
 ```
@@ -26,7 +26,7 @@ probers : Prober {
 ### Monitor with prober :
 
 ```shell
-$ ./monitor --probes prober-tgkill.yaml
+$ ./ebpf-utils monitor --probes prober-tgkill.yaml
 ```
 
 ```
@@ -54,7 +54,7 @@ source : /tmp/tgkill.c___x64_sys_tgkill
 #### generate a second probe
 
 ```shell
-$ ./target/release/generate "__x64_sys_openat" --kprobe --args "sys_f:%d" "sys_path:%s@user" -o /tmp/openat.c --prober-name "prober-openat.yaml"
+$ ./ebpf-utils generate "__x64_sys_openat" --kprobe --args "sys_f:%d" "sys_path:%s@user" -o /tmp/openat.c --prober-name "prober-openat.yaml"
 ```
 
 ```
@@ -74,7 +74,7 @@ probers : Prober {
 ```
 
 ```shell
-$ ./monitor --probes prober-tgkill.yaml prober-openat.yaml
+$ ./ebpf-utils monitor --probes prober-tgkill.yaml prober-openat.yaml
 ```
 
 ```
